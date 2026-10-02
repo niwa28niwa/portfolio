@@ -1,0 +1,536 @@
+@charset "utf-8";
+
+:root {
+    --basecolor1: #111111;
+    --basecolor2: #696666;
+    --maincolor1: #d4c39e;
+    --maincolor2: #e0e0e0;
+    --accentcolor: #bf0a0a;
+    --Legendary: #ff8000;
+    --set: #00ff00;
+    --bar: #B32424;
+    --cru: #E5E5E5;
+    --dh: #4A2E80;
+    --monk: #FFD700;
+    --nec: #D8D8D8;
+    --wd: #2E8B57;
+    --wiz: #00D2FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* ページ全体のスクロールを滑らかにする */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ボタンのスタイルと固定配置 */
+.to-top {
+    position: fixed;
+    /* 画面に固定 */
+    bottom: 10px;
+    /* 下からの位置 */
+    right: 10px;
+    /* 右からの位置 */
+    width: 40px;
+    /* ボタンの幅 */
+    height: 40px;
+    /* ボタンの高さ */
+    background-color: #333333;
+    /* ボタンの背景色 */
+    color: var(--Legendary);
+    /* 矢印の色 */
+    text-decoration: none;
+    /* 下線を消す */
+    border-radius: 50%;
+    /* ボタンを丸くする */
+    display: flex;
+    /* 矢印を中央に寄せる */
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    /* 矢印の大きさ */
+    font-weight: bold;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    /* 軽い影をつける */
+    z-index: 9999;
+    /* 最前面に表示 */
+     opacity: 0.5;
+    transition: opacity 0.5s;
+    /* ホバー時のアニメーション */
+}
+
+/* マウスを乗せたときの見た目 */
+.to-top:hover {
+    opacity: 1;
+    /* 少し透明にする */
+}
+
+body {
+    background-color: var(--basecolor1);
+    color: var(--maincolor2);
+    margin: 0 30px;
+}
+
+body span {
+    display: inline-block;
+    color: var(--set);
+}
+
+body span.item {
+    display: inline-block;
+    color: var(--Legendary);
+}
+
+header {
+    position: relative;
+    /* 文字を画像の上に配置するための基準点 */
+    width: 100%;
+    height: auto;
+}
+
+header img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+header h1 {
+    position: absolute;
+    /* 画像の上に浮かせる */
+
+    top: 50%;
+    /* 上からのすき間（お好みで調整してください） */
+
+    left: 50%;
+    /* 左からのすき間（お好みで調整してください） */
+    transform: translate(-50%, -50%);
+    /* 文字の「中心」を真ん中に合わせる魔法のコード */
+
+    /* --- 見た目の調整 --- */
+    color: var(--accentcolor);
+    /* 文字の色 */
+    margin: 0;
+    /* デフォルトの余白をリセット */
+    font-size: 4rem;
+    /* 文字の大きさ（PC基準） */
+    text-align: center;
+    /* 2行以上になったときも中央揃えにする */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    /* 文字を読みやすくする影 */
+    width: 90%;
+    /* 画面が狭いとき、文字が画像の横端にぶつからないようにする */
+}
+
+/* スマホ（画面幅767px以下）の時の調整 */
+@media screen and (max-width: 767px) {
+    header h1 {
+        font-size: 2rem;
+        /* スマホでは文字を小さくする */
+    }
+}
+
+#main {
+    max-width: 680px;
+    /* テキストの最大横幅を制限 */
+    width: 100%;
+    /* 画面が狭いときは自動縮小（レスポンシブ対応） */
+    margin-left: auto;
+    /* 左右中央寄せ */
+    margin-right: auto;
+    /* 左右中央寄せ */
+    font-size: 16px;
+    /* 基本の文字サイズ */
+    line-height: 1.7;
+    /* 読みやすい行間 */
+    padding: 0 20px;
+    /* スマホ表示時に画面端に文字がくっつくのを防ぐ */
+}
+
+h2 {
+    text-align: center;
+    color: var(--maincolor2);
+    border: 5px solid var(--basecolor2);
+    border-left: 15px solid var(--basecolor2);
+    margin: 20px 0 10px 0;
+    padding: 5px 15px;
+}
+
+#build h2.bar {
+    border: 5px solid var(--bar);
+    border-left: 15px solid var(--bar);
+}
+
+#build h2.cru {
+    border: 5px solid var(--cru);
+    border-left: 15px solid var(--cru);
+}
+
+#build h2.dh {
+    border: 5px solid var(--dh);
+    border-left: 15px solid var(--dh);
+}
+
+#build h2.monk {
+    border: 5px solid var(--monk);
+    border-left: 15px solid var(--monk);
+}
+
+#build h2.nec {
+    border: 5px solid var(--nec);
+    border-left: 15px solid var(--nec);
+}
+
+#build h2.wd {
+    border: 5px solid var(--wd);
+    border-left: 15px solid var(--wd);
+}
+
+#build h2.wiz {
+    border: 5px solid var(--wiz);
+    border-left: 15px solid var(--wiz);
+}
+
+#nav ul {
+    text-align: center;
+    padding-left: 0;
+    margin-left: 0;
+    /* ブラウザによるmarginの差分もリセット */
+    list-style: none;
+    /* 中黒（ぽち）を消す設定 */
+}
+
+#nav li {
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid var(--maincolor1);
+    border-left: 10px solid var(--maincolor1);
+    border-radius: 8px;
+}
+
+#nav li a {
+    display: block;
+    color: var(--maincolor2);
+    text-decoration: none;
+}
+
+#nav li a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+#nav2 ul{
+    text-align: center;
+    padding-left: 0;
+    margin-left: 0;
+    /* ブラウザによるmarginの差分もリセット */
+    list-style: none;
+    /* 中黒（ぽち）を消す設定 */
+}
+
+#nav2 li {
+    display: inline-block;
+    width: 150px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#nav2 li a {
+    color: var(--maincolor2);
+    text-decoration: none;
+}
+
+#nav2 li a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+/* 画面幅が768px以下（スマホ・タブレット）の時の設定 */
+@media (max-width: 768px) {
+    #nav ul {
+        display: flex;       /* 横並びにする */
+        flex-wrap: wrap;     /* 画面端で折り返す */
+        padding: 0;
+        margin: 0;
+    }
+
+    #nav li {
+        width: calc(50% - 10px); /* 1列に2つ（50%）配置し、余白分を引く */
+        margin: 5px;             /* 上下左右の余白 */
+        box-sizing: border-box;  /* 枠線と内側余白を幅に含める */
+         /* 💡追加：左側の太線（10px）をスマホでは少し細く（5px）して文字のスペースを確保 */
+        border-left-width: 5px; 
+    }
+    #nav li a {
+        font-size: 15px;       /* スマホ用に文字を小さく調整（好みのサイズに変えてOK） */
+        white-space: nowrap;   /* 文字を絶対に改行させず、1行に強制する */
+        overflow: hidden;      /* 万が一はみ出た場合に枠外を隠す */
+        text-overflow: ellipsis; /* もし枠に収まらない場合は末尾を「…」にする（保険） */
+        text-align: center;    /* 文字を中央寄せにして見栄えを良くする */
+    }
+    #nav2 ul {
+        display: flex;       /* 横並びにする */
+        flex-wrap: wrap;     /* 画面端で折り返す */
+        padding: 0;
+        margin: 0;
+    }
+
+    #nav2 li {
+        width: calc(50% - 10px); /* 1列に2つ（50%）配置し、余白分を引く */
+        margin: 5px;             /* 上下左右の余白 */
+        box-sizing: border-box;  /* 枠線と内側余白を幅に含める */
+         /* 💡追加：左側の太線（10px）をスマホでは少し細く（5px）して文字のスペースを確保 */
+        border-left-width: 5px; 
+    }
+    #nav2 li a {
+        font-size: 15px;       /* スマホ用に文字を小さく調整（好みのサイズに変えてOK） */
+        white-space: nowrap;   /* 文字を絶対に改行させず、1行に強制する */
+        overflow: hidden;      /* 万が一はみ出た場合に枠外を隠す */
+        text-overflow: ellipsis; /* もし枠に収まらない場合は末尾を「…」にする（保険） */
+        text-align: center;    /* 文字を中央寄せにして見栄えを良くする */
+    }
+}
+
+
+#bar h2 {
+    color: var(--bar);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+
+}
+
+#cru h2 {
+    color: var(--cru);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+#dh h2 {
+    color: var(--dh);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+#monk h2 {
+    color: var(--monk);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+#nec h2 {
+    color: var(--nec);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+#wd h2 {
+    color: var(--wd);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+#wiz h2 {
+    color: var(--wiz);
+    border: 5px solid var(--maincolor1);
+    border-left: 15px solid var(--maincolor1);
+    margin: 20px 0 10px 0;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    border: 2px solid var(--bar);
+    padding: 5px 10px;
+}
+
+table th {
+    border: 2px solid var(--accentcolor);
+    padding: 5px 10px;
+    background-color: var(--bar);
+}
+
+thead {
+    color: var(--maincolor2);
+}
+
+tbody {
+    border: 2px solid var(--accentcolor);
+    color: var(--maincolor2);
+}
+
+tbody a {
+    color: var(--maincolor2);
+    text-decoration: none;
+}
+
+tbody a:hover {
+    opacity: 0.5;
+    text-decoration: underline;
+}
+
+#skill table.passiv {
+    margin-top: 10px;
+    /* 30pxの部分を好きな数値（20px〜40pxなど）に調整してください */
+}
+
+#gem table.lGem {
+    margin-top: 10px;
+    /* 30pxの部分を好きな数値（20px〜40pxなど）に調整してください */
+}
+
+/* 全体コンテナの基本設定 */
+.table-container {
+    display: flex;
+    align-items: center;
+    /* キャラクターをテーブルの上下中央に配置 */
+    gap: 20px;
+    /* テーブルと画像の隙間 */
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+/* テーブルがスペースを広く使う */
+.table-content {
+    flex: 1;
+}
+
+/* 画像を表示するエリアのサイズを制限 */
+.table-image {
+    flex-shrink: 0;
+    width: 200px;
+    /* 横幅の基準（イラストに合わせて150px〜250pxで調整） */
+    display: flex;
+}
+
+/* 1,3,5,7番目のテーブル（画像が右側） */
+.table-container:nth-of-type(odd) .table-image {
+    justify-content: flex-start;
+    /* 左（テーブル側）に寄せる */
+}
+
+/* 2,4,6番目のテーブル（画像が左側） */
+.table-container:nth-of-type(even) {
+    flex-direction: row-reverse;
+}
+
+.table-container:nth-of-type(even) .table-image {
+    justify-content: flex-end;
+    /* 右（テーブル側）に寄せる */
+}
+
+/* 【重要】縦長画像が巨大化しないための強制ストッパー */
+.table-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    /* 親要素（200px）からはみ出さない */
+    max-height: 350px;
+    /* ★縦長画像でも、高さは最大350pxでストップさせる */
+    object-fit: contain;
+    /* 縦横比を崩さずに枠内に収める */
+    display: block;
+}
+
+/* スマホ表示の時は縦並びにする */
+@media (max-width: 768px) {
+
+    .table-container,
+    .table-container:nth-of-type(even) {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .table-image {
+        width: 100%;
+        justify-content: center !important;
+        /* スマホでは中央揃え */
+    }
+
+    .table-image img {
+        max-height: 250px;
+        /* スマホでは少し小さめに制限 */
+    }
+}
+
+footer {
+    color: #696666;
+}
+
+/* PCサイズ（画面幅768px以上）の時の調整 */
+@media screen and (min-width: 768px) {
+
+    #base {
+        max-width: 1200px;
+        /* ★トップ画像の横幅が広がりすぎないように制限（数値はお好みで） */
+        margin: 0 auto;
+        /* 画面の中央に配置 */
+    }
+
+    #base img {
+        width: 100%;
+        height: 480px;
+        /* ★PCで見た時に程よい高さに固定する（例: 400px〜500px） */
+        object-fit: cover;
+        /* 画像が横に引き伸ばされて歪むのを防ぎ、綺麗に切り抜く魔法のコード */
+    }
+
+    #base h1 {
+        font-size: 4rem;
+        /* PCサイズ用の大きな文字 */
+    }
+
+    #nav2 {
+        max-width: 1200px;
+        /* 画像の幅と合わせる */
+        margin: 30px auto;
+        /* 画像の下に「30px」のすき間を作りつつ、中央寄せ */
+    }
+}
+
+/* 7月30日追加分 */
+/* ヘッダー全体の高さを画面の高さ（または必要な高さ）に制限する */
+#build {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    /* 画面の縦幅いっぱいに収める設定 */
+}
+
+/* タイトルと画像のエリアを柔軟に縮小させる */
+.build-title-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 1;
+    /* ナビを押し出さないように縮小を許可 */
+    min-height: 0;
+    /* 子要素（画像）の縮小を有効にする魔法の属性 */
+}
+
+/* 画像を枠に合わせて自動縮小させる */
+.build-title-wrap img {
+    max-width: 100%;
+    /* 横幅がはみ出さないように */
+    max-height: 50vh;
+    /* 画面の高さの半分（50%）を上限にして自動縮小 */
+    object-fit: contain;
+    /* 縦横比を維持したまま綺麗に収める */
+}
