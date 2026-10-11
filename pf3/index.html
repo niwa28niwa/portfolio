@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>庭28 - バナー制作実績ポートフォリオ</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .profile {
+      max-width: 700px;
+      margin: 0 auto 40px auto;
+      color: #555;
+      line-height: 1.6;
+      text-align: left;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 5px solid #0288d1;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .card-info {
+      padding: 20px;
+      text-align: left;
+    }
+
+    .card-tag {
+      display: inline-block;
+      background: #e1f5fe;
+      color: #0288d1;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin: 0 0 12px 0;
+      color: #2c3e50;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: #555;
+      margin: 0 0 6px 0;
+      line-height: 1.5;
+    }
+
+    .bold-label {
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>バナー制作実績</h1>
+
+    <div class="profile">
+      <p style="margin: 0 0 10px 0;">Canvaを使用して制作した自主制作バナーです。</p>
+      <p style="margin: 0 0 10px 0;">広告の目的やターゲットに合わせて情報を整理し、視認性と分かりやすさを意識して制作しました。</p>
+      <p style="margin: 0;"><span class="bold-label">使用ツール：</span> Canva<br><span class="bold-label">制作区分：</span> 自主制作
+      </p>
+    </div>
+
+    <div class="gallery">
+      <!-- 01. 美容サロン -->
+      <div class="card">
+        <img src="img/beauty.png" alt="美容サロン 春のキャンペーン">
+        <div class="card-info">
+          <span class="card-tag">01. 美容サロン 春のキャンペーン</span>
+          <p class="card-title">新規顧客 予約促進バナー</p>
+          <p class="card-text"><span class="bold-label">目的：</span> 新規顧客の予約促進</p>
+          <p class="card-text"><span class="bold-label">ターゲット：</span> 美容やスキンケアに関心のある方</p>
+          <p class="card-text"><span class="bold-label">工夫した点：</span> キャンペーン特典を目立たせ、サービス内容と予約への導線を整理しました。</p>
+        </div>
+      </div>
+
+      <!-- 02. カフェ -->
+      <div class="card">
+        <img src="img/cafe.png" alt="カフェ 季節限定ドリンク">
+        <div class="card-info">
+          <span class="card-tag">02. カフェ 季節限定ドリンク</span>
+          <p class="card-title">季節限定商品 PRバナー</p>
+          <p class="card-text"><span class="bold-label">目的：</span> 季節限定商品のPR</p>
+          <p class="card-text"><span class="bold-label">ターゲット：</span> カフェや季節限定ドリンクに関心のある方</p>
+          <p class="card-text"><span class="bold-label">工夫した点：</span> 商品の魅力が伝わるよう、写真・商品名・価格・販売期間の見せ方を工夫しました。</p>
+        </div>
+      </div>
+
+      <!-- 03. Webデザイン講座 -->
+      <div class="card">
+        <img src="img/school.png" alt="Webデザイン講座 受講生募集">
+        <div class="card-info">
+          <span class="card-tag">03. Webデザイン講座 受講生募集</span>
+          <p class="card-title">無料説明会 申し込み促進バナー</p>
+          <p class="card-text"><span class="bold-label">目的：</span> 無料説明会への申し込み促進</p>
+          <p class="card-text"><span class="bold-label">ターゲット：</span> Webデザインを学びたい未経験者</p>
+          <p class="card-text"><span class="bold-label">工夫した点：</span> 講座の特徴を整理し、申し込みにつながるボタンを分かりやすく配置しました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
