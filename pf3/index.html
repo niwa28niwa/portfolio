@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -5,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>バナー制作ポートフォリオ</title>
+
   <style>
     body {
       font-family: 'Helvetica Neue', Arial, sans-serif;
@@ -38,9 +40,27 @@
       border-left: 5px solid #0288d1;
     }
 
+    .section-title {
+      text-align: left;
+      font-size: 1.4rem;
+      color: #2c3e50;
+      border-bottom: 2px solid #0288d1;
+      padding-bottom: 10px;
+      margin: 35px 0 10px;
+    }
+
+    /* 自主制作のギャラリー */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 20px 0;
+    }
+
+    /* クライアント案件：PCでは3列分の幅を維持 */
+    .client-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 30px;
       padding: 20px 0;
     }
@@ -51,18 +71,24 @@
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: transform 0.2s;
+      min-width: 0;
     }
 
     .card:hover {
       transform: translateY(-5px);
     }
 
+    /* 画像表示エリア：全カードで正方形に統一 */
     .img-wrapper {
       width: 100%;
+      aspect-ratio: 1 / 1;
       cursor: zoom-in;
-      /* 虫眼鏡マークにしてクリックできることを伝える */
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
     }
 
     .img-wrapper::after {
@@ -86,9 +112,13 @@
       opacity: 1;
     }
 
+    /* 画像全体を表示し、トリミングしない */
     .card img {
-      width: 100%;
+      width: auto;
       height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
     }
 
@@ -106,6 +136,11 @@
       font-size: 0.8rem;
       font-weight: bold;
       margin-bottom: 10px;
+    }
+
+    .card-tag.client {
+      background: #e8f5e9;
+      color: #2e7d32;
     }
 
     .card-title {
@@ -127,7 +162,7 @@
       color: #333;
     }
 
-    /* 拡大（モーダル）表示のCSS */
+    /* 拡大表示用モーダル */
     .modal {
       display: none;
       position: fixed;
@@ -150,8 +185,11 @@
     }
 
     .modal-content {
-      max-width: 90%;
-      max-height: 90%;
+      width: auto;
+      height: auto;
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
       border-radius: 4px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       transform: scale(0.9);
@@ -161,35 +199,59 @@
     .modal.show .modal-content {
       transform: scale(1);
     }
+
+    /* タブレットでは2列 */
+    @media (max-width: 999px) {
+      .client-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* スマホでは1列 */
+    @media (max-width: 699px) {
+      .client-gallery {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <div class="container">
+
     <h1>バナー制作ポートフォリオ</h1>
 
     <div class="profile">
-      <p style="margin: 0 0 10px 0;">Canvaを使用し、広告の目的やターゲットに合わせたバナーを制作しています。</p>
-      <p style="margin: 0 0 10px 0;">美容・飲食・スクールなど、さまざまな用途を想定した自主制作作品を掲載しています。情報の見やすさや伝わりやすさを意識し、目的に合ったデザインを心がけています。</p>
+      <p style="margin: 0 0 10px 0;">
+        Canvaを使用し、広告の目的やターゲットに合わせたバナーを制作しています。
+      </p>
+
+      <p style="margin: 0 0 10px 0;">
+        美容・飲食・スクールなどの自主制作作品に加え、クライアント様からご依頼いただいた制作作品も掲載しています。
+        情報の見やすさや伝わりやすさを意識し、目的に合ったデザインを心がけています。
+      </p>
+
       <p style="margin: 0 0 10px 0;">
         <span class="bold-label">使用ツール：</span> Canva<br>
-        <span class="bold-label">制作区分：</span> 自主制作
+        <span class="bold-label">制作内容：</span> バナー・SNS画像制作
       </p>
+
       <p style="margin: 0;">
         バナー制作のご相談・ご依頼をお待ちしております。
       </p>
-  <p style="margin: 0;">
-※掲載作品は、架空の企業・店舗を想定して制作した自主制作作品です。実在する企業・団体からの依頼による制作物ではありません。
-</p>
     </div>
 
+    <h2 class="section-title">自主制作</h2>
+
     <div class="gallery">
+
       <!-- 01. 美容サロン -->
       <div class="card">
         <div class="img-wrapper" onclick="openModal('beauty.png')">
           <img src="img/beauty.png" alt="美容サロン 春のキャンペーン">
         </div>
+
         <div class="card-info">
           <span class="card-tag">01. 美容サロン 春のキャンペーン</span>
           <p class="card-title">新規顧客 予約促進バナー</p>
@@ -204,6 +266,7 @@
         <div class="img-wrapper" onclick="openModal('cafe.png')">
           <img src="img/cafe.png" alt="カフェ 季節限定ドリンク">
         </div>
+
         <div class="card-info">
           <span class="card-tag">02. カフェ 季節限定ドリンク</span>
           <p class="card-title">季節限定商品 PRバナー</p>
@@ -218,6 +281,7 @@
         <div class="img-wrapper" onclick="openModal('school.png')">
           <img src="img/school.png" alt="Webデザイン講座 受講生募集">
         </div>
+
         <div class="card-info">
           <span class="card-tag">03. Webデザイン講座 受講生募集</span>
           <p class="card-title">無料説明会 申し込み促進バナー</p>
@@ -226,15 +290,39 @@
           <p class="card-text"><span class="bold-label">工夫した点：</span> 講座の特徴を整理し、申し込みにつながるボタンを分かりやすく配置しました。</p>
         </div>
       </div>
+
     </div>
+
+    <h2 class="section-title">クライアント案件</h2>
+
+    <!-- client-galleryを追加 -->
+    <div class="gallery client-gallery">
+
+      <!-- 04. 夜カフェ -->
+      <div class="card">
+        <div class="img-wrapper" onclick="openModal('night-cafe.png')">
+          <img src="img/night-cafe.png" alt="仕事終わりの夜カフェ">
+        </div>
+
+        <div class="card-info">
+          <span class="card-tag client">04. 夜カフェ Instagram投稿</span>
+          <p class="card-title">夜カフェ紹介バナー</p>
+          <p class="card-text"><span class="bold-label">目的：</span> 仕事終わりに立ち寄りたくなる夜カフェの魅力を伝える</p>
+          <p class="card-text"><span class="bold-label">ターゲット：</span> 仕事終わりにゆっくり過ごしたい方</p>
+          <p class="card-text"><span class="bold-label">工夫した点：</span> 暖色系の照明と落ち着いた写真を活かし、夜の隠れ家カフェの雰囲気を表現しました。</p>
+          <p class="card-text"><span class="bold-label">使用ツール：</span> Canva</p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
-  <!-- 拡大表示用モーダル構造 -->
+  <!-- 拡大表示用モーダル -->
   <div id="imageModal" class="modal" onclick="closeModal()">
-    <img class="modal-content" id="modalImg">
+    <img class="modal-content" id="modalImg" alt="拡大画像">
   </div>
 
-  <!-- 拡大・縮小を制御するJavaScript -->
   <script>
     function openModal(imgSrc) {
       const modal = document.getElementById('imageModal');
@@ -248,6 +336,7 @@
       const modal = document.getElementById('imageModal');
       modal.classList.remove('show');
     }
+
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         closeModal();
@@ -256,5 +345,4 @@
   </script>
 
 </body>
-
 </html>
